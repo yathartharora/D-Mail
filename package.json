@@ -1,0 +1,38 @@
+{
+  "name": "mailapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yathartharora/mailapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yathartharora/mailapp/issues"
+  },
+  "homepage": "https://github.com/yathartharora/mailapp#readme",
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "ganache-cli": "^6.12.1",
+    "ipfs-api": "^26.1.2",
+    "mocha": "^8.2.1",
+    "next": "^10.0.6",
+    "next-routes": "^1.4.2",
+    "react": "^17.0.1",
+    "react-copy-to-clipboard": "^5.0.3",
+    "react-dom": "^17.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.1",
+    "solc": "^0.4.25",
+    "truffle-hdwallet-provider": "0.0.3",
+    "web3": "^1.0.0-beta.26"
+  }
+}
