@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import web3 from '../Ethereum/web3';
 import mail from '../Ethereum/mail';
 import Layout from '../Components/Layout';
-import {Form, Button, Input, Grid, List,Menu,Label} from 'semantic-ui-react';
+import {Form, Button, Input, Grid, List,Menu,Label,Icon} from 'semantic-ui-react';
 import ipfs from '../ipfs';
 import { Header, Segment } from 'semantic-ui-react';
 import Phonebook from '../Components/Phonebook';
-
+import Inbox from '../Components/Inbox';
+import Sent from '../Components/Sent';
 class Mail extends Component{
 
 
@@ -105,39 +106,20 @@ class Mail extends Component{
         this.setState({addressbook:true});
    }
     //Inbox - display the messages that I have received from others
-    display = async (event) => {
-        event.preventDefault();
-        try {
-            const accounts = await web3.eth.getAccounts();
-            console.log(accounts[0]);
-            const messages = await mail.methods.displaymessages(accounts[0]).call();
-            console.log(messages);
-            this.setState({inbox_state: messages});
+    display =  () => {
             this.setState({show_write: false});
             this.setState({show_sent: false});
             this.setState({show_inbox: true});
             this.setState({addressbook:false});
            
-        } catch (error) {
-            
-        }
-    }
+        } 
+    
    //sent
-    outbox = async (event) => {
-        event.preventDefault();
-        try {
-            const accounts = await web3.eth.getAccounts();
-            console.log(accounts[0]);
-            const messages = await mail.methods.sentMessages(accounts[0]).call();
-            console.log(messages);
-            this.setState({sent_state: messages});
+    outbox = () => {
             this.setState({show_write: false});
             this.setState({show_sent: true});
             this.setState({show_inbox: false});
             this.setState({addressbook:false});
-        } catch (error) {
-            
-        }
     }
 
     popcontent = () => {
@@ -150,7 +132,7 @@ class Mail extends Component{
                 <Grid columns={1}>
                 <Grid.Row centered> <Menu inverted size={"massive"} widths={16}>
                 <Menu.Item
-                name='home'
+                name='Dmail'
                 /></Menu></Grid.Row>
 
                 <Grid.Row >
@@ -159,9 +141,9 @@ class Mail extends Component{
                 
                
                 <Grid.Column width={4} floated="left">
-                <Segment stacked>    
+                <Segment stacked>  
+                <Button color='teal' icon labelPosition='right' fluid size='large' style={{ margin :"0px 0px 10px 0px" }} onClick={this.show_write}>New Mail <Icon name='plus' /></Button>  
                 <Button color='teal' fluid size='large' style={{ margin :"0px 0px 10px 0px" }} onClick={this.display}>Inbox</Button>
-                <Button color='teal' fluid size='large' style={{ margin :"0px 0px 10px 0px" }} onClick={this.show_write}>New Mail</Button>
                 <Button color='teal' fluid size='large' style={{ margin :"0px 0px 10px 0px" }} onClick={this.outbox}>Sent</Button>
                 <Button color='teal' fluid size='large' style={{ margin :"0px 0px 10px 0px" }} onClick={this.show_addressbook}>Address Book</Button>
                 
@@ -221,65 +203,9 @@ class Mail extends Component{
                 </Grid.Column>
                 }
 
-                {/*Inbox display*/}
 
-
-                { 
-                this.state.show_inbox && 
-                <>
-                <Grid.Column width={6} floated="left">
-                <Segment stacked>
-                <List divided relaxed>
-                {this.state.inbox_state.map((msg) => {
-                    return ( 
-                        <List.Item onClick={this.popcontent()}>
-                        <List.Icon name='github' size='large' verticalAlign='middle' />
-                        <List.Content>
-                        <List.Header as='a'>{msg.sender}</List.Header>
-                        <List.Description as='a'>{msg.subject}</List.Description>
-                        </List.Content>
-                        </List.Item>)                
-                     })}
-                </List>
-                </Segment>   
-                </Grid.Column>
-                <Grid.Column width={6} floated="left">
-                <Segment stacked>
-                <List divided relaxed>
-                <h1>Messges here</h1>
-                </List>
-                </Segment>   
-                </Grid.Column>
-                </>}
-
-
-            { this.state.show_sent 
-            && 
-            <>
-            <Grid.Column width={6} floated="left">
-            <Segment stacked>
-            <List divided relaxed>
-            {this.state.sent_state.map((msg) => {
-                return (
-                    <List.Item>
-                    <List.Icon name='github' size='large' verticalAlign='middle' />
-                    <List.Content>
-                    <List.Header as='a'>{msg.subject}</List.Header>
-                    <List.Description as='a'>{msg.body}</List.Description>
-                    </List.Content>
-                    </List.Item>)                
-                 })}
-            </List>
-            </Segment>   
-            </Grid.Column>
-             <Grid.Column width={6} floated="left">
-             <Segment stacked>
-             <List divided relaxed>
-             <h1>Messges here</h1>
-             </List>
-             </Segment>   
-             </Grid.Column></>
-            }
+            { this.state.show_inbox && <Inbox/>}
+            { this.state.show_sent  &&  <Sent/>}
             
 
             </Grid.Row>
