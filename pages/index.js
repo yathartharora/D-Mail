@@ -4,10 +4,13 @@ import mail from '../Ethereum/mail';
 import Layout from '../Components/Layout';
 import {Form, Button, Input, Grid, List,Menu,Label,Icon} from 'semantic-ui-react';
 import ipfs from '../ipfs';
-import { Header, Segment } from 'semantic-ui-react';
+import {Header, Segment} from 'semantic-ui-react';
 import Phonebook from '../Components/Phonebook';
 import Inbox from '../Components/Inbox';
 import Sent from '../Components/Sent';
+import Image from 'next/image'
+import Instruction from '../Components/Instruction';
+
 class Mail extends Component{
 
 
@@ -125,16 +128,25 @@ class Mail extends Component{
     popcontent = () => {
         console.log("pop envoked");
     }
+
+    
     render(){
         return(
             <Layout>
                
                 <Grid columns={1}>
-                <Grid.Row centered> <Menu inverted size={"massive"} widths={16}>
-                <Menu.Item
-                name='Dmail'
-                /></Menu></Grid.Row>
+                <Grid.Row centered> 
 
+                <Menu fluid>
+                <Menu.Item
+                name="DMAIL"/>
+                <Menu.Item position="right">
+                <Instruction/>
+                </Menu.Item>
+                </Menu>
+                </Grid.Row>
+                
+               
                 <Grid.Row >
 
                 {/*sidebar  improvement - will shift to vertical menu */}
@@ -149,6 +161,7 @@ class Mail extends Component{
                 
                 </Segment>
                 </Grid.Column>
+                
              {/*Address Book Column */}
              {this.state.addressbook && <Phonebook/>}
              

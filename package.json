@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/yathartharora/mailapp#readme",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "fs-extra": "^9.0.1",
     "ganache-cli": "^6.12.1",
     "ipfs-api": "^26.1.2",
@@ -29,8 +30,11 @@
     "react": "^17.0.1",
     "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17.0.1",
+    "react-multi-carousel": "^2.6.1",
+    "sass": "^1.32.6",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
+    "slick-carousel": "^1.8.1",
     "solc": "^0.4.25",
     "truffle-hdwallet-provider": "0.0.3",
     "web3": "^1.0.0-beta.26"

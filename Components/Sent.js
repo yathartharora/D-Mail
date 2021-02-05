@@ -38,7 +38,6 @@ export default function Sent() {
                     <List.Icon name='envelope' size='large' verticalAlign='middle' />
                     <List.Content>
                     <List.Header as='a'>{msg.subject}</List.Header>
-                    <List.Description as='a'>{msg.body}</List.Description>
                     </List.Content>
                     </List.Item>)                
                  })}
@@ -49,7 +48,7 @@ export default function Sent() {
              <Segment stacked>
              <List divided relaxed>
             
-             <h3>{Messagebody}</h3>
+             <List.Content><h3>{Messagebody}</h3></List.Content>
              </List>
              </Segment>   
              </Grid.Column>
