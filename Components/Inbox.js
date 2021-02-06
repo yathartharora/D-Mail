@@ -48,7 +48,7 @@ export default function Inbox() {
         <Grid.Column width={6} floated="left">
         <Segment stacked>
         <List divided relaxed>
-        <h3>{Messagebody}</h3>
+        <List.Content><h3>{Messagebody}</h3></List.Content>
         </List>
         </Segment>   
         </Grid.Column>
